@@ -17,7 +17,7 @@ do
     read -p "Choose between bridged or natted network for the containers: " bridge_nat
     read -p "Enter the IP address of the containers (e.g: 192.168.2.5 [They will be itereated by 1]): " lxc_ip
     read -p "Enter the Default Gateway for each container (e.g: 192.168.2.1): " lxc_gateway
-    
+
     clear
     echo "You entered the follwing:"
     echo ""
@@ -62,10 +62,10 @@ do
         for k in `seq $lxc_amount`
         do
             lxc-create -n $lxc_name$k -t $lxc_distribution
-            
+
             echo "" >> "$lxc_container_path/$lxc_name$k/config"
             echo "# Network Settings" >> "$lxc_container_path/$lxc_name$k/config"
-            
+
             if [ $bridge_nat == "bridge" ]
             then
                 echo "# Bridge" >> "$lxc_container_path/$lxc_name$k/config"
